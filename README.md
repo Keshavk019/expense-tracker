@@ -128,6 +128,7 @@ Approx. **3.5 hours**, broken down as:
 ## 🖼️ Screenshots
 
 ![Screenshot 1](screenshots/Screenshot%201.png)
+![Screenshot 2](screenshots/Screenshot%202.png)
  
 
 
