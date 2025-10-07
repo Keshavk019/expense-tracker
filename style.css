@@ -1,0 +1,490 @@
+/* Enhanced theme variables with vibrant colors */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+:root {
+  --bg: #e0e7ff; /* Richer blue-gray background */
+  --card: #ffffff; /* Clean white for cards */
+  --text: #1e293b; /* Deep slate for text */
+  --muted-text: #6b7280; /* Softer slate for muted text */
+  --primary: #7c3aed; /* Vibrant purple primary */
+  --primary-600: #6d28d9; /* Darker purple for depth */
+  --accent-positive: #34d399; /* Bright emerald for positive */
+  --accent-positive-bg: #ecfdf5; /* Light emerald background */
+  --accent-negative: #fb7185; /* Coral for negative emphasis */
+  --accent-negative-bg: #fff1f2; /* Light coral background */
+  --accent-purple: #a78bfa; /* Light purple for accents */
+  --accent-teal: #2dd4bf; /* Teal for additional vibrancy */
+  --danger: #dc2626; /* Vivid red for delete */
+  --border: #d1d5db; /* Light gray border */
+  --shadow: 0 6px 16px rgba(0, 0, 0, 0.1); /* Richer shadow */
+  --radius: 14px; /* Slightly larger radius for softness */
+}
+
+/* Base reset (minimal) */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text);
+  background: radial-gradient(1200px 800px at 20% -10%, #ffffff 0%, #c7d2fe 40%, var(--bg) 100%); /* Richer gradient */
+  line-height: 1.5;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Subtle background pattern */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml,%3Csvg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23a78bfa" fill-opacity="0.05"%3E%3Cpath d="M10 10.5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1z"/%3E%3C/g%3E%3C/svg%3E');
+  z-index: -1;
+}
+
+/* Layout */
+header {
+  max-width: 1080px;
+  margin: 24px auto 8px;
+  padding: 0 16px;
+  text-align: center;
+}
+
+/* Website name styling */
+h1 {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(45deg, var(--primary), var(--accent-teal));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+h1:hover {
+  transform: scale(1.05);
+  text-shadow: 0 4px 8px rgba(124, 58, 237, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+main {
+  max-width: 1080px;
+  margin: 0 auto 48px;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 900px) {
+  main { grid-template-columns: 420px 1fr; gap: 24px; }
+}
+
+/* Card sections */
+section {
+  background: var(--card);
+  border: 1px solid transparent;
+  border-image: linear-gradient(45deg, var(--accent-purple), var(--accent-teal)) 1;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  animation: fadeIn 1s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.05), rgba(45, 212, 191, 0.05));
+  z-index: -1;
+}
+
+section > h2 {
+  margin: 0 0 12px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  background: linear-gradient(45deg, var(--primary), var(--accent-teal));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Summary Container */
+#summary {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+/* CSS for the 2 columns within each row */
+.summary-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* Target the four individual summary cards */
+.summary-row > div {
+  background: var(--card);
+  border: 1px solid transparent;
+  border-image: linear-gradient(45deg, var(--accent-purple), var(--accent-teal)) 1;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: pulse 3s infinite ease-in-out;
+}
+
+.summary-row > div:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Specific styling for the Total Spending card */
+.summary-row:first-child > div:first-child {
+  background-color: var(--accent-negative-bg);
+  border-image: linear-gradient(45deg, var(--accent-negative), var(--danger)) 1;
+}
+
+.summary-row:first-child > div:first-child .summary-value {
+  color: var(--accent-negative);
+}
+
+.summary-row:first-child > div:first-child .summary-label,
+.summary-row:first-child > div:first-child .summary-sub {
+  color: var(--accent-negative);
+  opacity: 0.8;
+}
+
+/* Specific styling for the Overall Total card */
+.summary-row:first-child > div:last-child {
+  background-color: var(--accent-positive-bg);
+  border-image: linear-gradient(45deg, var(--accent-positive), var(--accent-teal)) 1;
+}
+
+.summary-row:first-child > div:last-child .summary-value {
+  color: var(--accent-positive);
+}
+
+.summary-row:first-child > div:last-child .summary-label,
+.summary-row:first-child > div:last-child .summary-sub {
+  color: var(--accent-positive);
+  opacity: 0.8;
+}
+
+/* Monthly Summary */
+#monthly-summary {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 700px) {
+  #monthly-summary { grid-template-columns: repeat(2, 1fr); }
+}
+#monthly-summary .month-card {
+  background: var(--card);
+  border: 1px solid transparent;
+  border-image: linear-gradient(45deg, var(--accent-purple), var(--accent-teal)) 1;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#monthly-summary .month-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+}
+#monthly-summary .month-meta { display: flex; flex-direction: column; }
+#monthly-summary .month-title { font-weight: 600; color: var(--text); }
+#monthly-summary .month-total {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent-negative);
+  font-size: 18px;
+}
+
+.summary-label { font-size: 12px; color: var(--muted-text); margin-bottom: 4px; }
+.summary-value { font-size: 22px; font-weight: 700; color: var(--text); }
+.summary-sub { font-size: 12px; color: var(--muted-text); }
+
+#summary-categories { list-style: none; padding: 0; margin: 4px 0 0; max-height: 220px; overflow: auto; }
+#summary-categories li { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 6px 0; border-bottom: 1px dashed var(--border); }
+#summary-categories li:last-child { border-bottom: none; }
+#summary-categories li span:first-child { min-width: 0; flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#summary-categories li span:last-child { flex: 0 0 auto; font-variant-numeric: tabular-nums; color: var(--accent-negative); }
+
+/* Category chart responsive */
+#category-chart { display: block; width: 100%; height: auto; margin-top: 8px; max-width: 100%; }
+
+/* Form styles */
+form#expense-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 560px) {
+  form#expense-form {
+    grid-template-columns: 1fr 1fr;
+  }
+  form#expense-form > div:nth-last-child(2),
+  form#expense-form > div:last-child { grid-column: 1 / -1; }
+}
+
+label {
+  display: block;
+  margin: 0 0 6px;
+  font-size: 13px;
+  color: var(--muted-text);
+  font-weight: 500;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+  width: 100%;
+  padding: 12px 12px;
+  border: 1px solid transparent;
+  border-image: linear-gradient(45deg, var(--accent-purple), var(--accent-teal)) 1;
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--text);
+  outline: none;
+  transition: box-shadow .2s ease, border-image .2s ease, transform .06s ease;
+}
+
+input[list] {
+  width: 100%;
+  padding: 12px 12px;
+  border: 1px solid transparent;
+  border-image: linear-gradient(45deg, var(--accent-purple), var(--accent-teal)) 1;
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--text);
+  outline: none;
+  transition: box-shadow .2s ease, border-image .2s ease, transform .06s ease;
+}
+
+input::placeholder { color: #9ca3af; }
+
+input:focus {
+  border-image: linear-gradient(45deg, var(--primary), var(--accent-teal)) 1;
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.2);
+  transform: scale(1.01);
+}
+
+button[type="submit"] {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: linear-gradient(180deg, var(--primary), var(--primary-600));
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .2s ease, filter .15s ease, box-shadow .2s ease;
+  box-shadow: 0 6px 14px rgba(124, 58, 237, 0.3);
+  animation: fadeIn 1s ease-in-out;
+}
+
+button[type="submit"]:hover {
+  filter: brightness(1.15);
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
+}
+
+button[type="submit"]:active { transform: translateY(1px); }
+
+#form-error {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--danger);
+  min-height: 18px;
+}
+
+/* Delete button */
+.btn-delete {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: var(--danger);
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3);
+  transition: transform .2s ease, filter .15s ease, box-shadow .2s ease;
+}
+
+.btn-delete:hover {
+  filter: brightness(1.15);
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(220, 38, 38, 0.4);
+}
+
+.btn-delete:active { transform: translateY(1px); }
+
+/* Edit button */
+.btn-edit {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 10px;
+  border: 1px solid transparent;
+  border-image: linear-gradient(45deg, var(--accent-purple), var(--accent-teal)) 1;
+  border-radius: 8px;
+  background: #f9fafb;
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform .2s ease, background .15s ease, box-shadow .2s ease;
+}
+
+.btn-edit:hover {
+  background: var(--accent-purple);
+  color: #ffffff;
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(167, 139, 250, 0.3);
+}
+
+.btn-edit:active { transform: translateY(1px); }
+
+.btn-delete:focus-visible,
+.btn-edit:focus-visible,
+button[type="submit"]:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Action buttons layout */
+td > .btn-edit { margin-right: 8px; }
+
+/* Toast */
+#toast {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(45deg, var(--primary), var(--accent-teal));
+  color: #ffffff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease, transform .3s ease;
+  z-index: 1000;
+  font-size: 14px;
+}
+
+#toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Table styles */
+.table-wrapper {
+  overflow: auto;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  border-image: linear-gradient(45deg, var(--accent-purple), var(--accent-teal)) 1;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #ffffff;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--accent-positive-bg);
+  color: var(--muted-text);
+  text-align: left;
+  font-weight: 600;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border);
+  padding: 12px 14px;
+}
+
+tbody td {
+  border-bottom: 1px solid var(--border);
+  padding: 14px;
+  font-size: 14px;
+}
+
+tbody tr:hover {
+  background: linear-gradient(90deg, var(--accent-purple) 0%, var(--accent-teal) 100%);
+  color: #ffffff;
+}
+
+/* Style the Table Footer (Total Row) */
+tfoot th,
+tfoot td {
+  padding: 14px;
+  font-weight: 700;
+  border-top: 1px solid var(--border);
+  background: var(--accent-negative-bg);
+}
+
+/* Style the Total Amount in the footer */
+tfoot td#total-amount {
+  color: var(--accent-negative);
+}
+
+/* Utilities */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
